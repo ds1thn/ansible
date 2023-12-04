@@ -1,0 +1,6 @@
+# how to use
+# ansible-galaxy collection install -r galaxy-requirements.txt
+
+collections:
+- name: community.docker
+- name: community.mongodb
