@@ -2,7 +2,8 @@ FROM python:3.9.6-alpine3.14
 
 SHELL ["/bin/sh", "-o", "pipefail", "-c"]
 
-COPY requirements.txt /
+WORKDIR /
+COPY docker/requirements.txt /
 
 RUN set -eux \
    && apk add --no-cache \
@@ -30,7 +31,7 @@ ENV ANSIBLE_LOCAL_TEMP /tmp
 RUN set -eux \
    && ln -sf /usr/local/bin/python3 /usr/bin/python3
 
-COPY galaxy-requirements.txt /
+COPY docker/galaxy-requirements.txt /
 RUN set -eux \
    && echo "[galaxy]" > ansible.cfg \
    && echo "server = https://old-galaxy.ansible.com/" >> ansible.cfg \
